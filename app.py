@@ -179,17 +179,12 @@ def find_client_account(client_name, plan):
         scores = plan["client_key"].apply(score)
         best = scores.max() if not scores.empty else 0
         if best >= max(1, min(2, len(tokens))):
-    def find_client_account(client_name, plan):
-    # ... (gardez votre logique de calcul de scores ici) ...
-    
-    # Sécurité : On vérifie si la liste des scores n'est pas vide et si le score max est > 0
-        if not scores.empty and scores.max() > 0:
+def find_client_account(client_name, plan):
+    # On imagine que 'scores' est calculé ici dans votre code
+    if not scores.empty and scores.max() > 0:
         return plan.iloc[scores.idxmax()]["Compte"]
     else:
-        # Si le client n'est pas trouvé, on renvoie un compte d'attente ou un message
-        # Cela évite que l'application ne plante (IndexError)
-        return "41100000"  # Ou "CLIENT_NON_TROUVE" pour le repérer facilement
-    return None
+        return "41100000"
 
 
 def add_error(errors, row_num, column, value, reason, suggestion):
